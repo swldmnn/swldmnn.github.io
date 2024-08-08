@@ -1,8 +1,73 @@
 <html>
-  <head>
-    <title>Hello World</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>  
-  </body>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>swldmnn</title>
+
+    <script>
+        let state = "beating"
+
+        function init() {
+            var element = document.getElementById("backdrop");
+            element.addEventListener('animationend', (e) => { applyNextAnimation() });
+        }
+
+        function toggleState() {
+            var backdrop = document.getElementById("backdrop");
+            var title = document.getElementById("title");
+            var content = document.getElementById("content");
+            var body = document.body
+
+            if (state === "beating") {
+                state = "growing";
+                backdrop.classList.add("growing");
+                backdrop.classList.remove("beating");
+                backdrop.classList.add("backgroundBase");
+                backdrop.classList.remove("backgroundContrast");
+                body.classList.remove("backgroundBase");
+                body.classList.add("backgroundContrast");
+                title.classList.toggle("hidden")
+                content.classList.toggle("hidden")
+            } else if (state === "growing") {
+                state = "shrinking";
+                backdrop.classList.add("shrinking");
+                backdrop.classList.remove("growing");
+                backdrop.classList.add("backgroundContrast");
+                backdrop.classList.remove("backgroundBase");
+                body.classList.add("backgroundBase");
+                body.classList.remove("backgroundContrast");
+                title.classList.toggle("hidden")
+                content.classList.toggle("hidden")
+            } else if (state === "shrinking") {
+                state = "beating";
+                backdrop.classList.add("beating");
+                backdrop.classList.remove("shrinking");
+            }
+        }
+
+        function applyNextAnimation() {
+            if (state === "shrinking") {
+                toggleState();
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()" onclick="toggleState()" class="backgroundBase">
+    <div id="backdrop" class="backdrop beating backgroundContrast"></div>
+    <div id="title" class="title">swldmnn</div>
+    <div id="content" class="content hidden">
+        <p>Hi, im a Developer from Germany.</p>
+        <p>I use Java, Spring, Typescript, Node,
+            React, GraphQl, K8S, ... and whatever else comes around ;-)</p>
+            <br><br>
+            <p>Here's a cat</p>
+            <pre class="mono">
+/\_/\
+( o.o )
+> ^ <
+            </pre>
+    </div>
+</body>
+
 </html>
