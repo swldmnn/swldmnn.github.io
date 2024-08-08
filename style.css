@@ -1,6 +1,6 @@
 :root {
     --base-color: #223333;
-    --contrast-color: #82e0aa;
+    --contrast-color: #7dcea0;
   }
 
 @keyframes beat {
@@ -40,7 +40,7 @@
         width: 80%;
         height: 80%;
         line-height: 1rem;
-        border-radius: 10px;
+        border-radius: 20px;
     }
 }
 
@@ -49,7 +49,7 @@
         width: 80%;
         height: 80%;
         line-height: 10rem;
-        border-radius: 10px;
+        border-radius: 20px;
     }
 
     100% {
@@ -62,10 +62,6 @@
 
 .colorBase {
     color: var(--base-color);
-}
-
-.mono {
-    font-family: monospace;
 }
 
 .colorContrast {
@@ -91,10 +87,6 @@ body {
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: x-large;
     transition: background-color 1s;
 }
@@ -107,10 +99,6 @@ body {
     font-family: serif;
     text-align: center;
     vertical-align: middle;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: x-large;
     transition: opacity 0.5s;
     transition-timing-function: linear;
@@ -120,16 +108,20 @@ body {
     width: 70%;
     height: 70%;
     color: var(--contrast-color);
-    font-family: serif;
+    font-family: monospace;
     text-align: center;
     vertical-align: middle;
+    font-size: x-large;
+    transition: opacity 0.5s;
+    transition-timing-function: linear;
+}
+
+
+.centered {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: x-large;
-    transition: opacity 0.5s;
-    transition-timing-function: linear;
 }
 
 .hidden {
