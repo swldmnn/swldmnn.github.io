@@ -9,60 +9,73 @@
 
         function init() {
             var element = document.getElementById("backdrop");
-            element.addEventListener('animationend', (e) => { applyNextAnimation() });
+            element.addEventListener('animationend', (e) => { onAnimationEnd() })
         }
 
-        function toggleState() {
-            var backdrop = document.getElementById("backdrop");
-            var title = document.getElementById("title");
-            var content = document.getElementById("content");
-            var body = document.body
-
-            if (state === "beating") {
-                state = "growing";
-                backdrop.classList.add("growing");
-                backdrop.classList.remove("beating");
-                backdrop.classList.add("backgroundBase");
-                backdrop.classList.remove("backgroundContrast");
-                body.classList.remove("backgroundBase");
-                body.classList.add("backgroundContrast");
-                title.classList.toggle("hidden")
-                content.classList.toggle("hidden")
-            } else if (state === "growing") {
-                state = "shrinking";
-                backdrop.classList.add("shrinking");
-                backdrop.classList.remove("growing");
-                backdrop.classList.add("backgroundContrast");
-                backdrop.classList.remove("backgroundBase");
-                body.classList.add("backgroundBase");
-                body.classList.remove("backgroundContrast");
-                title.classList.toggle("hidden")
-                content.classList.toggle("hidden")
-            } else if (state === "shrinking") {
-                state = "beating";
-                backdrop.classList.add("beating");
-                backdrop.classList.remove("shrinking");
+        function onClick() {
+            if (["beating", "grown"].includes(state)) {
+                toggleState()
             }
         }
 
-        function applyNextAnimation() {
-            if (state === "shrinking") {
+        function onAnimationEnd() {
+            if (["shrinking", "growing"].includes(state)) {
                 toggleState();
+            }
+        }
+
+        function toggleState() {
+            var backdrop = document.getElementById("backdrop")
+            var title = document.getElementById("title")
+            var content = document.getElementById("content")
+            var body = document.body
+
+            switch (state) {
+                case "beating":
+                    state = "growing";
+                    backdrop.classList.add("growing")
+                    backdrop.classList.remove("beating")
+                    backdrop.classList.add("backgroundBase")
+                    backdrop.classList.remove("backgroundContrast")
+                    body.classList.remove("backgroundBase")
+                    body.classList.add("backgroundContrast")
+                    title.classList.toggle("hidden")
+                    content.classList.toggle("hidden")
+                    break
+                case "growing":
+                    state = "grown"
+                    break
+                case "grown":
+                    state = "shrinking";
+                    backdrop.classList.add("shrinking")
+                    backdrop.classList.remove("growing")
+                    backdrop.classList.add("backgroundContrast")
+                    backdrop.classList.remove("backgroundBase")
+                    body.classList.add("backgroundBase")
+                    body.classList.remove("backgroundContrast")
+                    title.classList.toggle("hidden")
+                    content.classList.toggle("hidden")
+                    break
+                case "shrinking":
+                    state = "beating";
+                    backdrop.classList.add("beating")
+                    backdrop.classList.remove("shrinking")
+                    break
             }
         }
     </script>
 </head>
 
-<body onload="init()" onclick="toggleState()" class="backgroundBase">
-    <div id="backdrop" class="backdrop beating backgroundContrast"></div>
-    <div id="title" class="title">swldmnn</div>
-    <div id="content" class="content hidden">
-        <p>Hi, i'm a developer from Germany.</p>
+<body onload="init()" onclick="onClick()" class="backgroundBase">
+    <div id="backdrop" class="backdrop beating backgroundContrast centered"></div>
+    <div id="title" class="title centered">swldmnn</div>
+    <div id="content" class="content hidden centered">
+        <p>Hi, im a Developer from Germany.</p>
         <p>I use Java, Spring, Typescript, Node,
             React, GraphQl, K8S, ... and whatever else comes around ;-)</p>
-            <br><br>
-            <p>Here's a cat</p>
-            <pre class="mono">
+        <br><br>
+        <p>Here's a cat</p>
+        <pre>
 /\_/\
 ( o.o )
 > ^ <
