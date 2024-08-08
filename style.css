@@ -104,6 +104,7 @@ body {
     height: 8rem;
     line-height: 8rem;
     color: var(--base-color);
+    font-family: serif;
     text-align: center;
     vertical-align: middle;
     position: fixed;
@@ -119,6 +120,7 @@ body {
     width: 70%;
     height: 70%;
     color: var(--contrast-color);
+    font-family: serif;
     text-align: center;
     vertical-align: middle;
     position: fixed;
