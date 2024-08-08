@@ -1,0 +1,155 @@
+:root {
+    --base-color: #223333;
+    --contrast-color: lime;
+  }
+
+@keyframes beat {
+    0% {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+    }
+
+    10% {
+        width: 9rem;
+        height: 9rem;
+        line-height: 9rem;
+    }
+
+    20% {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+    }
+
+    30% {
+        width: 9rem;
+        height: 9rem;
+        line-height: 9rem;
+    }
+
+    40% {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+    }
+}
+
+@keyframes grow {
+    100% {
+        width: 80%;
+        height: 80%;
+        line-height: 1rem;
+        border-radius: 10px;
+    }
+}
+
+@keyframes shrink {
+    0% {
+        width: 80%;
+        height: 80%;
+        line-height: 10rem;
+        border-radius: 10px;
+    }
+
+    100% {
+        width: 8rem;
+        height: 8rem;
+        line-height: 8rem;
+        border-radius: 50%;
+    }
+}
+
+.colorBase {
+    color: var(--base-color);
+}
+
+.mono {
+    font-family: monospace;
+}
+
+.colorContrast {
+    color: var(--contrast-color);
+}
+
+.backgroundBase {
+    background-color: var(--base-color);
+}
+
+.backgroundContrast {
+    background-color: var(--contrast-color);
+}
+
+body {
+    transition: background-color 1s;
+}
+
+.backdrop {
+    width: 8rem;
+    height: 8rem;
+    line-height: 8rem;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    transition: background-color 1s;
+}
+
+.title {
+    width: 8rem;
+    height: 8rem;
+    line-height: 8rem;
+    color: var(--base-color);
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    transition: opacity 0.5s;
+    transition-timing-function: linear;
+}
+
+.content {
+    width: 70%;
+    height: 70%;
+    color: var(--contrast-color);
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    transition: opacity 0.5s;
+    transition-timing-function: linear;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.beating {
+    animation-name: beat;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.growing {
+    animation-name: grow;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.shrinking {
+    animation-name: shrink;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
